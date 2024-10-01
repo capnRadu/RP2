@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
 {
-    [SerializeField] private GameObject point;
+    public GameObject point;
     [SerializeField] private float speed;
 
     public void FireProjectile()
