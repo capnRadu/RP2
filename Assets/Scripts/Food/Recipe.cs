@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Recipe : MonoBehaviour
 {
-    private float moveSpeed = 2f;
+    private float moveSpeed = 1f;
     private Transform endPoint;
     public Transform EndPoint
     {
@@ -39,6 +39,8 @@ public class Recipe : MonoBehaviour
     private List<string> categoryOrder = new List<string> { "Appetizer", "Main Course", "Side Dish", "Dessert", "Drink" };
 
     [SerializeField] private Transform orderCanvasBackground;
+
+    [SerializeField] private List<GameObject> currentOrder = new List<GameObject>();
 
     private void Start()
     {
@@ -96,6 +98,8 @@ public class Recipe : MonoBehaviour
             orderItem.transform.localScale = new Vector3(1, 1, 1);
             orderItem.AddComponent<Image>().sprite = randomItem.sprite;
             orderItem.GetComponent<RectTransform>().sizeDelta = new Vector2(35, 35);
+
+            currentOrder.Add(orderItem);
         }
     }
 
@@ -103,7 +107,23 @@ public class Recipe : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            Destroy(gameObject);
+            foreach (GameObject orderItem in currentOrder)
+            {
+                if (orderItem.name == collision.gameObject.GetComponent<Projectile>().projectileName)
+                {
+                    orderItem.GetComponent<Image>().color = new Color(1, 1, 1, 0.4f);
+                    currentOrder.Remove(orderItem);
+
+                    if (currentOrder.Count == 0)
+                    {
+                        Debug.LogWarning("order complete");
+                    }   
+
+                    break;
+                }
+            }
+
+            Destroy(collision.gameObject);
         }
     }
 }

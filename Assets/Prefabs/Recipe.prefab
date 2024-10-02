@@ -158,14 +158,14 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 2a6ac6cd0e4ee10498554e00c950d59a, type: 3}
   - name: Sushi
     sprite: {fileID: 21300000, guid: 8fe8c704812061c4891fb99c96506210, type: 3}
-  - name: Taco
+  - name: Tacos
     sprite: {fileID: 21300000, guid: fee83c215e7691b439508ec31be634c5, type: 3}
   sideDishes:
-  - name: French Fries
+  - name: Fries
     sprite: {fileID: 21300000, guid: 61156f76fa1fc824b9e4383e389afe2e, type: 3}
   - name: Onion Rings
     sprite: {fileID: 21300000, guid: a76aafa16af35844f9381eb9358025e6, type: 3}
-  - name: Fried Vegetables
+  - name: Vegetables
     sprite: {fileID: 21300000, guid: 36b682bd44fe39946b341e98fdeb987b, type: 3}
   desserts:
   - name: Ice Cream
@@ -184,6 +184,7 @@ MonoBehaviour:
   - name: Milkshake
     sprite: {fileID: 21300000, guid: 7c92f57881d7ca641bcb770cadb93c32, type: 3}
   orderCanvasBackground: {fileID: 7601300280299442886}
+  currentOrder: []
 --- !u!1 &2709674866888270685
 GameObject:
   m_ObjectHideFlags: 0

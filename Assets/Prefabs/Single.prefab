@@ -329,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 712422265438235751, guid: 66db221a3a848694395ce749a546040e, type: 3}
   speed: 2500
+  projectileName: 
 --- !u!1 &7569309281367804660
 GameObject:
   m_ObjectHideFlags: 0

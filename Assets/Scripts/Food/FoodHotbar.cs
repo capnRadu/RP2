@@ -102,6 +102,7 @@ public class FoodHotbar : MonoBehaviour
                         if (foodProjectile.name == foodItem.name)
                         {
                             shootProjectile.point = foodProjectile;
+                            shootProjectile.projectileName = foodProjectile.name;
                             shootProjectile.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = foodProjectile.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
                             shootProjectile.transform.GetChild(0).localScale = foodProjectile.transform.GetChild(0).localScale;
                         }

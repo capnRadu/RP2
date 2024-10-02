@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public string projectileName;
+
     private void Start()
     {
         StartCoroutine(DestroyAfterTime());

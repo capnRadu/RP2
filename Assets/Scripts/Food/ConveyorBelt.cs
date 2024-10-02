@@ -19,7 +19,7 @@ public class ConveyorBelt : MonoBehaviour
         {
             Recipe recipe = Instantiate(recipePrefab, startPoint.position, Quaternion.identity);
             recipe.EndPoint = endPoint;
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(15.0f);
         }
     }
 }
