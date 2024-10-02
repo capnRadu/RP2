@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,9 @@ using UnityEngine.UI;
 
 public class Recipe : MonoBehaviour
 {
-    private float moveSpeed = 1f;
+    [NonSerialized] public ConveyorBelt conveyorBeltScript;
+
+    [NonSerialized] public float moveSpeed;
     private Transform endPoint;
     public Transform EndPoint
     {
@@ -53,7 +56,7 @@ public class Recipe : MonoBehaviour
             { "Drink", drinks }
         };
 
-        int orderDifficulty = Random.Range(1, 6);
+        int orderDifficulty = UnityEngine.Random.Range(1, 6);
         GenerateOrder(orderDifficulty);
     }
 
@@ -76,7 +79,7 @@ public class Recipe : MonoBehaviour
 
         while (selectedCategories.Count < difficultyLevel)
         {
-            string randomCategory = categoryOrder[Random.Range(0, categoryOrder.Count)];
+            string randomCategory = categoryOrder[UnityEngine.Random.Range(0, categoryOrder.Count)];
 
             if (!selectedCategories.Contains(randomCategory))
             {
@@ -89,7 +92,7 @@ public class Recipe : MonoBehaviour
         foreach (string category in selectedCategories)
         {
             FoodItem[] items = foodCategories[category];
-            FoodItem randomItem = items[Random.Range(0, items.Length)];
+            FoodItem randomItem = items[UnityEngine.Random.Range(0, items.Length)];
             Debug.Log(randomItem.name);
 
             GameObject orderItem = new GameObject(randomItem.name);
@@ -117,6 +120,7 @@ public class Recipe : MonoBehaviour
                     if (currentOrder.Count == 0)
                     {
                         Debug.LogWarning("order complete");
+                        conveyorBeltScript.IncreaseDifficulty();
                     }   
 
                     break;
