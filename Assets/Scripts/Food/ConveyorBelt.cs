@@ -33,6 +33,11 @@ public class ConveyorBelt : MonoBehaviour
     {
         spawnCooldown -= 0.5f;
         recipeMoveSpeed += 0.1f;
+        GameManager.Instance.maxComboTime -= 0.5f;
+
+        spawnCooldown = Mathf.Clamp(spawnCooldown, 5f, 15f);
+        recipeMoveSpeed = Mathf.Clamp(recipeMoveSpeed, 0.5f, 4f);
+        GameManager.Instance.maxComboTime = Mathf.Clamp(GameManager.Instance.maxComboTime, 3f, 10f);
 
         var recipes = FindObjectsOfType<Recipe>();
         foreach (var recipe in recipes)

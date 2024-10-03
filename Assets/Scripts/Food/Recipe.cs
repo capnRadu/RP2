@@ -117,10 +117,15 @@ public class Recipe : MonoBehaviour
                     orderItem.GetComponent<Image>().color = new Color(1, 1, 1, 0.4f);
                     currentOrder.Remove(orderItem);
 
+                    int score = 10 * GameManager.Instance.CalculateCombo();
+                    GameManager.Instance.UpdatePlayerScore(score);
+                    Debug.Log(score);
+
                     if (currentOrder.Count == 0)
                     {
                         Debug.LogWarning("order complete");
                         conveyorBeltScript.IncreaseDifficulty();
+                        GameManager.Instance.UpdatePlayerScore(50);
                     }   
 
                     break;
