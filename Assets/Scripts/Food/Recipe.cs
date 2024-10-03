@@ -69,6 +69,11 @@ public class Recipe : MonoBehaviour
 
         if (transform.position == EndPoint.position)
         {
+            if (currentOrder.Count > 0)
+            {
+                FindObjectOfType<PlayerHUD>().LoseLife();
+            }
+
             Destroy(gameObject);
         }
     }
@@ -110,10 +115,14 @@ public class Recipe : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            bool isCorrect = false;
+
             foreach (GameObject orderItem in currentOrder)
             {
                 if (orderItem.name == collision.gameObject.GetComponent<Projectile>().projectileName)
                 {
+                    isCorrect = true;
+
                     orderItem.GetComponent<Image>().color = new Color(1, 1, 1, 0.4f);
                     currentOrder.Remove(orderItem);
 
@@ -130,6 +139,11 @@ public class Recipe : MonoBehaviour
 
                     break;
                 }
+            }
+
+            if (!isCorrect)
+            {
+                FindObjectOfType<PlayerHUD>().LoseLife();
             }
 
             Destroy(collision.gameObject);
