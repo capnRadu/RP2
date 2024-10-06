@@ -145,8 +145,6 @@ public class Recipe : MonoBehaviour
             {
                 FindObjectOfType<PlayerHUD>().LoseLife();
             }
-
-            Destroy(collision.gameObject);
         }
     }
 }

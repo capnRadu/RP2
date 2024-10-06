@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Recipe"))
+        if (collision.gameObject.CompareTag("Recipe") || collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }
