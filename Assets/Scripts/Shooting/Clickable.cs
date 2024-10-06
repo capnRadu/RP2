@@ -7,11 +7,18 @@ public class Clickable : MonoBehaviour
 {
     [SerializeField] private Reticle reticleManager;
     private bool canShoot = true;
+    private SpriteRenderer sprite;
+
+    private void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
 
     private void OnMouseDown()
     {
         if (canShoot)
         {
+            sprite.color = new Color(1f, 1f, 1f, 0.2f);
             reticleManager.Selected(this.gameObject);
         }
     }
@@ -20,6 +27,7 @@ public class Clickable : MonoBehaviour
     {
         if (canShoot)
         {
+            sprite.color = new Color(1f, 1f, 1f, 1f);
             reticleManager.Deselect();
         }
     }
@@ -27,6 +35,7 @@ public class Clickable : MonoBehaviour
     public void DisableShooting()
     {
         canShoot = false;
+        sprite.color = Color.red;
         StartCoroutine(EnableShooting());
     }
 
@@ -34,5 +43,6 @@ public class Clickable : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         canShoot = true;
+        sprite.color = new Color(1f, 1f, 1f, 1f);
     }
 }
